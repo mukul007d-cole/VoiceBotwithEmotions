@@ -12,15 +12,14 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public')); // For serving static assets like CSS, images
+app.use(express.static('public')); 
 app.set('view engine', 'ejs');
-// Flash Messages
 app.use(flash());
 
-// Session Setup
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET || 'default_secret', // Load from .env
@@ -32,7 +31,7 @@ app.use(
     }),
     cookie: {
       secure: process.env.NODE_ENV === 'production', // Use HTTPS in production
-      httpOnly: true, // Prevent client-side access
+      httpOnly: 
       maxAge: 1000 * 60 * 60 * 24, // 1-day expiration
     },
   })
